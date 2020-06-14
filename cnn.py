@@ -12,7 +12,7 @@ class Net(torch.nn.Module):
         self.pool2 = torch.nn.MaxPool2d(2, 2)
         self.fc1 = torch.nn.Linear(3 * 224* 224,16)
         self.fc2 = torch.nn.Linear( 16, 64)
-        self.fc3 = torch.nn.Linear(64, 32)
+        self.fc3 = torch.nn.Linear(64, 4)
 
 
     def forward(self, x):

@@ -46,14 +46,15 @@ def train_model(net,dataloaders_dict,criterion,optimizer,num_epochs):
                     if phase=='train':
                         loss.backward()
                         optimizer.step()
-
+                    print(preds)
+                    print(labels.data)
                     epoch_loss += loss.item() * inputs.size(0)
                     epoch_corrects += torch.sum(preds==labels.data)
 
             epoch_loss=epoch_loss/len(dataloaders_dict[phase].dataset)
             epoch_acc=epoch_corrects.double(
             )/len(dataloaders_dict[phase].dataset)
-
+        
             print('{} Loss: {:.4f} Acc: {:.4f}'.format(
                 phase,epoch_loss,epoch_acc
             ))
