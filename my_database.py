@@ -28,19 +28,27 @@ class ImageTransform():
             'train':transforms.Compose([
                 transforms.RandomResizedCrop(
                     resize,scale=(0.5, 1.0)),
-                transforms.RandomHorizontalFlip(),
+                # transforms.RandomHorizontalFlip(),
                 transforms.ToTensor(),
                 transforms.Normalize((0.5,),(0.5,))
             ]),
             'val':transforms.Compose([
-                transforms.Resize(resize),
+                #transforms.Resize(resize),
                 transforms.CenterCrop(resize),
+                transforms.RandomResizedCrop(
+                    resize,scale=(0.5, 1.0)),
                 transforms.ToTensor(),
                 transforms.Normalize((0.5,),(0.5,))
-            ])
-        }
-    
-    def __call__(self,img,phase='train'):
+            ]),
+            'test':transforms.Compose([
+                #transforms.Resize(resize),
+                transforms.CenterCrop(resize),
+                transforms.RandomResizedCrop(
+                    resize,scale=(0.5, 1.0)),
+                transforms.ToTensor(),
+                transforms.Normalize((0.5,),(0.5,))
+            ])}
+    def __call__(self,img,phase):
         #phasel'train'or'val'で前処理のモードを指定する
         return self.data_transform[phase](img)
 

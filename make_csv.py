@@ -13,15 +13,15 @@ for count in par_id:
         img_name = os.path.join(dir_label,file_name)
         #print(img_name)
         if img_name.find('spring') != -1:
-            season= 'spring'
+            season= 0
         elif img_name.find('summer') != -1:
-            season= 'summer'
+            season= 1
         elif img_name.find('fall') != -1:
-            season = 'autumn'
+            season = 2
         elif img_name.find('autumn') != -1:
-            season = 'autumn'
+            season = 2
         elif img_name.find('winter') != -1:
-            season = 'winter'
+            season = 3
         else: continue
 
         with open('new_csv.csv', 'a', newline="") as f:

@@ -4,7 +4,6 @@ from sklearn.model_selection import train_test_split
 def make(phase):
 
     data = pd.read_csv(('new_csv.csv'))
-
     train_data,test_data=train_test_split(data,test_size=0.3)
     val_data, test_data=train_test_split(test_data,test_size=0.5)
     if phase=='train':
